@@ -34,15 +34,13 @@ body {
                 align-items: flex-end;
                 .column {
                     margin: 1px;
-                   /* background: $columnColor;*/
                     border-radius: inherit;
                     flex-grow: 1;
                 }
-            }
-            @for $i from 1 through $columnCount {
-                .column:nth-child(#{$i}){
-                    background: lighten($columnColor, $percent * $i);
-                   /* $percent: $percent + $percentStep;*/
+                @for $i from 1 through $columnCount {
+                    .column:nth-child(#{$i}){
+                        background: lighten($columnColor, $percent * $i);
+                    }
                 }
             }
         }
