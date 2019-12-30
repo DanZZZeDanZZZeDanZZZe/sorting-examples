@@ -1,5 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-
-ReactDOM.render(<App />, document.getElementById("root"));
+import "./style.scss";
+class App extends React.Component {
+    render () {
+        return (
+            <main>
+                
+            </main>
+        );
+    }
+}  
+ReactDOM.render(
+    <header>Демонстрация работы алгоритмов сортировки</header>,
+    <App />,
+    document.getElementById("root"));
