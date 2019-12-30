@@ -1,6 +1,12 @@
 $mainColor: rgb(248, 225, 97);
 $menuColor: darken($mainColor, 10%);
 $sortContColor: lighten($mainColor, 10%);
+$columnColor: complement(darken($mainColor, 40%));
+
+$columnCount: 20;
+$percent: 2%;
+
+
 body {
     padding: 0px;
     margin: 0px;
@@ -27,9 +33,16 @@ body {
                 display: flex;
                 align-items: flex-end;
                 .column {
-                    border: 1px solid black;
+                    margin: 1px;
+                   /* background: $columnColor;*/
                     border-radius: inherit;
                     flex-grow: 1;
+                }
+            }
+            @for $i from 1 through $columnCount {
+                .column:nth-child(#{$i}){
+                    background: lighten($columnColor, $percent * $i);
+                   /* $percent: $percent + $percentStep;*/
                 }
             }
         }
