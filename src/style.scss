@@ -3,9 +3,8 @@ $menuColor: darken($mainColor, 10%);
 $sortContColor: lighten($mainColor, 10%);
 $columnColor: complement(darken($mainColor, 40%));
 
-$columnCount: 20;
+$columnCount: 30;
 $percent: 2%;
-
 
 body {
     padding: 0px;
@@ -38,8 +37,9 @@ body {
                     flex-grow: 1;
                 }
                 @for $i from 1 through $columnCount {
-                    .column:nth-child(#{$i}){
+                    .columnNum#{$i}{
                         background: lighten($columnColor, $percent * $i);
+                        height: calc(100% - #{$percent} * #{$i});
                     }
                 }
             }

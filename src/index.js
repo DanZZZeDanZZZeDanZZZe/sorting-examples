@@ -15,7 +15,7 @@ class Container extends React.Component {
     render () {
         return (
             <div className="container">
-                <SortContainer length={20}/>
+                <SortContainer length={30}/>
             </div>
         );
     }
@@ -30,9 +30,14 @@ class SortContainer extends React.Component {
         return arr.map((item, index) => 
             {
                 const divStyle = {
-                    height: "50%",
+                    
                 }
-                return <div className="column" style={divStyle} key={"column" + index}></div>
+                return <div 
+                    className= {`column columnNum${index + 1}`} 
+                    style={divStyle}
+                    key={"column" + (index + 1)}
+                >   
+                </div>
             });
     }
     render () {
