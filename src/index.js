@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./style.scss";
-class App extends React.Component {
+class App extends React.Component {   
+    constructor(props) {
+        super(props)
+    }
     render () {
         return (
             <main>
@@ -24,8 +27,11 @@ class SortContainer extends React.Component {
     constructor(props) {
         super(props);
         this.length = props.length; 
+        this.state = {
+            columns: this.columns(this.length)
+        }
     }
-    renderColumns(length) {
+    columns(length) {
         let arr = Array(length).fill(null);
         return arr.map((item, index) => 
             {
@@ -40,10 +46,15 @@ class SortContainer extends React.Component {
                 </div>
             });
     }
+    setColumns(columns) {
+        this.setState({
+            columns: columns
+        });
+    }
     render () {
         return (
             <div className="sortContainer">
-                {this.renderColumns(this.length)}
+                {this.state.columns}
             </div>
         );
     }
