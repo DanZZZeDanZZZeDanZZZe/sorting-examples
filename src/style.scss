@@ -6,6 +6,21 @@ $columnColor: complement(darken($mainColor, 40%));
 $columnCount: 30;
 $percent: 2%;
 
+@mixin appearance {
+    opacity: 0; 
+    transition: 0.1s; 
+    animation: show 0.3s 1; 
+    animation-fill-mode: forwards; 
+    animation-delay: 0.1s; 
+}
+@keyframes show{
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 body {
     padding: 0px;
     margin: 0px;
@@ -35,6 +50,7 @@ body {
                     margin: 1px;
                     border-radius: inherit;
                     flex-grow: 1;
+                    @include appearance;
                 }
                 @for $i from 1 through $columnCount {
                     .columnNum#{$i}{
