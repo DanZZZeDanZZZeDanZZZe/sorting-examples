@@ -42,7 +42,7 @@ class SortContainer extends React.Component {
         super(props);
         this.shuffle = props.shuffle;
         this.length = props.length; 
-        this.handleClick = this.handleClick.bind(this);
+     /*   this.handleClick = this.handleClick.bind(this);*/
         this.state = {
             history: [{
                 columns: this.columns()
@@ -62,7 +62,8 @@ class SortContainer extends React.Component {
                     className= {`column columnNum${index + 1}`} 
                     style={divStyle}
                     key={"column" + (index + 1)}
-                >   
+                > 
+                {index+1}  
                 </div>
             });
     }
@@ -75,20 +76,20 @@ class SortContainer extends React.Component {
             stepNumber: history.length,
         });
     }
-    createTimer = () => {
+/*    createTimer = () => {
         this.timerId = setInterval(() => {
             let arr = this.shuffle(this.state.history[this.state.stepNumber].columns);
             this.setColumns(arr);
             console.log(this.state.stepNumber);
         }, 1000)
-    }
-    componentDidMount() {
+    }*/
+  /*  componentDidMount() {
         this.createTimer();
     }
     componentWillUnmount() {
         clearInterval(this.timerID);
-    }
-    handleClick() {
+    }*/
+/*    handleClick() {
         const palyback = this.state.palyback;
         if (palyback) {
             clearInterval(this.timerId);
@@ -98,10 +99,10 @@ class SortContainer extends React.Component {
         this.setState({
             palyback: !palyback
         })
-    }
+    }*/
     render () {
         return (
-            <div className="sortContainer" onClick={this.handleClick}>
+            <div className="sortContainer"/* onClick={this.handleClick}*/>
                 {this.state.history[this.state.stepNumber].columns}
             </div>
         );
