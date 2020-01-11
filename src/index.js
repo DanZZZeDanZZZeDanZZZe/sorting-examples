@@ -42,10 +42,12 @@ class SortContainer extends React.Component {
         super(props);
         this.shuffle = props.shuffle;
         this.length = props.length; 
-     /*   this.handleClick = this.handleClick.bind(this);*/
+        this.handleClick = this.handleClick.bind(this);
+        /*this.setColumns = this.setColumns.bind(this);*/
+
         this.state = {
             history: [{
-                columns: this.columns()
+                columns: this.shuffle(this.columns())
             }],
             stepNumber: 0,
             palyback: true
@@ -69,12 +71,36 @@ class SortContainer extends React.Component {
     }
     setColumns(columns) {
         const history = this.state.history.slice();
+        const col = columns.slice();
+      //  console.log(col);
         this.setState({
             history: history.concat([{
-                columns: columns,
+                columns: col,
             }]),
             stepNumber: history.length,
         });
+    //    console.log(this.state.history);
+    }
+    bubbleSort(arr) {
+        let y = true;
+        for (let i = 0; i < arr.length - 1; i++) {
+            let wasSwap = false;
+            for (let j = 0; j < arr.length - 1; j++) {
+                let [a, b] = [+arr[j].key.slice(6), +arr[j+1].key.slice(6)]
+                if (a > b) {
+                    [arr[j], arr[j+1]] = [arr[j+1], arr[j]];
+                    if (y) {
+                        console.log(y);
+                        y = false;
+                        let currentArr = arr;
+                      /*  setTimeout(()=>{this.setColumns(currentArr)}, 1000);*/
+                    }
+                    wasSwap = true;
+                }
+            }
+            if (!wasSwap) break;
+        }
+        return arr;
     }
 /*    createTimer = () => {
         this.timerId = setInterval(() => {
@@ -83,13 +109,13 @@ class SortContainer extends React.Component {
             console.log(this.state.stepNumber);
         }, 1000)
     }*/
-  /*  componentDidMount() {
-        this.createTimer();
+    componentDidMount() {
+    //    console.log(this.state.history);
     }
-    componentWillUnmount() {
+  /*  componentWillUnmount() {
         clearInterval(this.timerID);
     }*/
-/*    handleClick() {
+/*handleClick() {
         const palyback = this.state.palyback;
         if (palyback) {
             clearInterval(this.timerId);
@@ -100,9 +126,17 @@ class SortContainer extends React.Component {
             palyback: !palyback
         })
     }*/
+    handleClick() {
+        let arr = this.state.history[this.state.stepNumber].columns.slice();
+     //   console.log(arr);
+        arr = this.bubbleSort(arr);
+       /* arr = this.shuffle(this.state.history[this.state.stepNumber].columns);*/
+        this.setColumns(arr);
+    //    console.log(arr);
+    }
     render () {
         return (
-            <div className="sortContainer"/* onClick={this.handleClick}*/>
+            <div className="sortContainer" onClick={this.handleClick}>
                 {this.state.history[this.state.stepNumber].columns}
             </div>
         );
