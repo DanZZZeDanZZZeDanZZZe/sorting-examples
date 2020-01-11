@@ -72,14 +72,13 @@ class SortContainer extends React.Component {
     setColumns(columns) {
         const history = this.state.history.slice();
         const col = columns.slice();
-      //  console.log(col);
         this.setState({
             history: history.concat([{
                 columns: col,
             }]),
             stepNumber: history.length,
         });
-    //    console.log(this.state.history);
+        console.log(this.state.history);
     }
     bubbleSort(arr) {
         let y = true;
@@ -93,7 +92,7 @@ class SortContainer extends React.Component {
                         console.log(y);
                         y = false;
                         let currentArr = arr;
-                      /*  setTimeout(()=>{this.setColumns(currentArr)}, 1000);*/
+                          setTimeout(()=>{this.setColumns(currentArr)}, 1000);
                     }
                     wasSwap = true;
                 }
@@ -110,7 +109,7 @@ class SortContainer extends React.Component {
         }, 1000)
     }*/
     componentDidMount() {
-    //    console.log(this.state.history);
+        console.log(this.state.history);
     }
   /*  componentWillUnmount() {
         clearInterval(this.timerID);
@@ -128,11 +127,11 @@ class SortContainer extends React.Component {
     }*/
     handleClick() {
         let arr = this.state.history[this.state.stepNumber].columns.slice();
-     //   console.log(arr);
+        console.log(arr);
         arr = this.bubbleSort(arr);
        /* arr = this.shuffle(this.state.history[this.state.stepNumber].columns);*/
         this.setColumns(arr);
-    //    console.log(arr);
+        console.log(this.state.history);
     }
     render () {
         return (
